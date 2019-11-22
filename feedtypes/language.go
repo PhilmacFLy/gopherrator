@@ -1,390 +1,395 @@
 package feedtypes
 
-import "errors"
+import (
+	"errors"
+	"strings"
+)
 
 type language int
 
 func (l language) MarshalJSON() ([]byte, error) {
-	var Result []byte
+	var Result string
 	switch l {
 	case langAA:
-		Result = []byte("aa")
+		Result = "aa"
 	case langAB:
-		Result = []byte("ab")
+		Result = "ab"
 	case langAE:
-		Result = []byte("ae")
+		Result = "ae"
 	case langAF:
-		Result = []byte("af")
+		Result = "af"
 	case langAK:
-		Result = []byte("ak")
+		Result = "ak"
 	case langAM:
-		Result = []byte("am")
+		Result = "am"
 	case langAN:
-		Result = []byte("an")
+		Result = "an"
 	case langAR:
-		Result = []byte("ar")
+		Result = "ar"
 	case langAS:
-		Result = []byte("as")
+		Result = "as"
 	case langAV:
-		Result = []byte("av")
+		Result = "av"
 	case langAY:
-		Result = []byte("ay")
+		Result = "ay"
 	case langAZ:
-		Result = []byte("az")
+		Result = "az"
 	case langBA:
-		Result = []byte("ba")
+		Result = "ba"
 	case langBE:
-		Result = []byte("be")
+		Result = "be"
 	case langBG:
-		Result = []byte("bg")
+		Result = "bg"
 	case langBH:
-		Result = []byte("bh")
+		Result = "bh"
 	case langBI:
-		Result = []byte("bi")
+		Result = "bi"
 	case langBM:
-		Result = []byte("bm")
+		Result = "bm"
 	case langBN:
-		Result = []byte("bn")
+		Result = "bn"
 	case langBO:
-		Result = []byte("bo")
+		Result = "bo"
 	case langBR:
-		Result = []byte("br")
+		Result = "br"
 	case langBS:
-		Result = []byte("bs")
+		Result = "bs"
 	case langCA:
-		Result = []byte("ca")
+		Result = "ca"
 	case langCE:
-		Result = []byte("ce")
+		Result = "ce"
 	case langCH:
-		Result = []byte("ch")
+		Result = "ch"
 	case langCO:
-		Result = []byte("co")
+		Result = "co"
 	case langCR:
-		Result = []byte("cr")
+		Result = "cr"
 	case langCS:
-		Result = []byte("cs")
+		Result = "cs"
 	case langCU:
-		Result = []byte("cu")
+		Result = "cu"
 	case langCV:
-		Result = []byte("cv")
+		Result = "cv"
 	case langCY:
-		Result = []byte("cy")
+		Result = "cy"
 	case langDA:
-		Result = []byte("da")
+		Result = "da"
 	case langDE:
-		Result = []byte("de")
+		Result = "de"
 	case langDV:
-		Result = []byte("dv")
+		Result = "dv"
 	case langDZ:
-		Result = []byte("dz")
+		Result = "dz"
 	case langEE:
-		Result = []byte("ee")
+		Result = "ee"
 	case langEL:
-		Result = []byte("el")
+		Result = "el"
 	case langEN:
-		Result = []byte("en")
+		Result = "en"
 	case langEO:
-		Result = []byte("eo")
+		Result = "eo"
 	case langES:
-		Result = []byte("es")
+		Result = "es"
 	case langET:
-		Result = []byte("et")
+		Result = "et"
 	case langEU:
-		Result = []byte("eu")
+		Result = "eu"
 	case langFA:
-		Result = []byte("fa")
+		Result = "fa"
 	case langFF:
-		Result = []byte("ff")
+		Result = "ff"
 	case langFI:
-		Result = []byte("fi")
+		Result = "fi"
 	case langFJ:
-		Result = []byte("fj")
+		Result = "fj"
 	case langFO:
-		Result = []byte("fo")
+		Result = "fo"
 	case langFR:
-		Result = []byte("fr")
+		Result = "fr"
 	case langFY:
-		Result = []byte("fy")
+		Result = "fy"
 	case langGA:
-		Result = []byte("ga")
+		Result = "ga"
 	case langGD:
-		Result = []byte("gd")
+		Result = "gd"
 	case langGL:
-		Result = []byte("gl")
+		Result = "gl"
 	case langGN:
-		Result = []byte("gn")
+		Result = "gn"
 	case langGU:
-		Result = []byte("gu")
+		Result = "gu"
 	case langGV:
-		Result = []byte("gv")
+		Result = "gv"
 	case langHA:
-		Result = []byte("ha")
+		Result = "ha"
 	case langHE:
-		Result = []byte("he")
+		Result = "he"
 	case langHI:
-		Result = []byte("hi")
+		Result = "hi"
 	case langHO:
-		Result = []byte("ho")
+		Result = "ho"
 	case langHR:
-		Result = []byte("hr")
+		Result = "hr"
 	case langHT:
-		Result = []byte("ht")
+		Result = "ht"
 	case langHU:
-		Result = []byte("hu")
+		Result = "hu"
 	case langHY:
-		Result = []byte("hy")
+		Result = "hy"
 	case langHZ:
-		Result = []byte("hz")
+		Result = "hz"
 	case langIA:
-		Result = []byte("ia")
+		Result = "ia"
 	case langID:
-		Result = []byte("id")
+		Result = "id"
 	case langIE:
-		Result = []byte("ie")
+		Result = "ie"
 	case langIG:
-		Result = []byte("ig")
+		Result = "ig"
 	case langII:
-		Result = []byte("ii")
+		Result = "ii"
 	case langIK:
-		Result = []byte("ik")
+		Result = "ik"
 	case langIO:
-		Result = []byte("io")
+		Result = "io"
 	case langIS:
-		Result = []byte("is")
+		Result = "is"
 	case langIT:
-		Result = []byte("it")
+		Result = "it"
 	case langIU:
-		Result = []byte("iu")
+		Result = "iu"
 	case langJA:
-		Result = []byte("ja")
+		Result = "ja"
 	case langJV:
-		Result = []byte("jv")
+		Result = "jv"
 	case langKA:
-		Result = []byte("ka")
+		Result = "ka"
 	case langKG:
-		Result = []byte("kg")
+		Result = "kg"
 	case langKI:
-		Result = []byte("ki")
+		Result = "ki"
 	case langKJ:
-		Result = []byte("kj")
+		Result = "kj"
 	case langKK:
-		Result = []byte("kk")
+		Result = "kk"
 	case langKL:
-		Result = []byte("kl")
+		Result = "kl"
 	case langKM:
-		Result = []byte("km")
+		Result = "km"
 	case langKN:
-		Result = []byte("kn")
+		Result = "kn"
 	case langKO:
-		Result = []byte("ko")
+		Result = "ko"
 	case langKR:
-		Result = []byte("kr")
+		Result = "kr"
 	case langKS:
-		Result = []byte("ks")
+		Result = "ks"
 	case langKU:
-		Result = []byte("ku")
+		Result = "ku"
 	case langKV:
-		Result = []byte("kv")
+		Result = "kv"
 	case langKW:
-		Result = []byte("kw")
+		Result = "kw"
 	case langKY:
-		Result = []byte("ky")
+		Result = "ky"
 	case langLA:
-		Result = []byte("la")
+		Result = "la"
 	case langLB:
-		Result = []byte("lb")
+		Result = "lb"
 	case langLG:
-		Result = []byte("lg")
+		Result = "lg"
 	case langLI:
-		Result = []byte("li")
+		Result = "li"
 	case langLN:
-		Result = []byte("ln")
+		Result = "ln"
 	case langLO:
-		Result = []byte("lo")
+		Result = "lo"
 	case langLT:
-		Result = []byte("lt")
+		Result = "lt"
 	case langLU:
-		Result = []byte("lu")
+		Result = "lu"
 	case langLV:
-		Result = []byte("lv")
+		Result = "lv"
 	case langMG:
-		Result = []byte("mg")
+		Result = "mg"
 	case langMH:
-		Result = []byte("mh")
+		Result = "mh"
 	case langMI:
-		Result = []byte("mi")
+		Result = "mi"
 	case langMK:
-		Result = []byte("mk")
+		Result = "mk"
 	case langML:
-		Result = []byte("ml")
+		Result = "ml"
 	case langMN:
-		Result = []byte("mn")
+		Result = "mn"
 	case langMR:
-		Result = []byte("mr")
+		Result = "mr"
 	case langMS:
-		Result = []byte("ms")
+		Result = "ms"
 	case langMT:
-		Result = []byte("mt")
+		Result = "mt"
 	case langMY:
-		Result = []byte("my")
+		Result = "my"
 	case langNA:
-		Result = []byte("na")
+		Result = "na"
 	case langNB:
-		Result = []byte("nb")
+		Result = "nb"
 	case langND:
-		Result = []byte("nd")
+		Result = "nd"
 	case langNE:
-		Result = []byte("ne")
+		Result = "ne"
 	case langNG:
-		Result = []byte("ng")
+		Result = "ng"
 	case langNL:
-		Result = []byte("nl")
+		Result = "nl"
 	case langNN:
-		Result = []byte("nn")
+		Result = "nn"
 	case langNO:
-		Result = []byte("no")
+		Result = "no"
 	case langNR:
-		Result = []byte("nr")
+		Result = "nr"
 	case langNV:
-		Result = []byte("nv")
+		Result = "nv"
 	case langNY:
-		Result = []byte("ny")
+		Result = "ny"
 	case langOC:
-		Result = []byte("oc")
+		Result = "oc"
 	case langOJ:
-		Result = []byte("oj")
+		Result = "oj"
 	case langOM:
-		Result = []byte("om")
+		Result = "om"
 	case langOR:
-		Result = []byte("or")
+		Result = "or"
 	case langOS:
-		Result = []byte("os")
+		Result = "os"
 	case langPA:
-		Result = []byte("pa")
+		Result = "pa"
 	case langPI:
-		Result = []byte("pi")
+		Result = "pi"
 	case langPL:
-		Result = []byte("pl")
+		Result = "pl"
 	case langPS:
-		Result = []byte("ps")
+		Result = "ps"
 	case langPT:
-		Result = []byte("pt")
+		Result = "pt"
 	case langQU:
-		Result = []byte("qu")
+		Result = "qu"
 	case langRM:
-		Result = []byte("rm")
+		Result = "rm"
 	case langRN:
-		Result = []byte("rn")
+		Result = "rn"
 	case langRO:
-		Result = []byte("ro")
+		Result = "ro"
 	case langRU:
-		Result = []byte("ru")
+		Result = "ru"
 	case langRW:
-		Result = []byte("rw")
+		Result = "rw"
 	case langSA:
-		Result = []byte("sa")
+		Result = "sa"
 	case langSC:
-		Result = []byte("sc")
+		Result = "sc"
 	case langSD:
-		Result = []byte("sd")
+		Result = "sd"
 	case langSE:
-		Result = []byte("se")
+		Result = "se"
 	case langSG:
-		Result = []byte("sg")
+		Result = "sg"
 	case langSH:
-		Result = []byte("sh")
+		Result = "sh"
 	case langSI:
-		Result = []byte("si")
+		Result = "si"
 	case langSK:
-		Result = []byte("sk")
+		Result = "sk"
 	case langSL:
-		Result = []byte("sl")
+		Result = "sl"
 	case langSM:
-		Result = []byte("sm")
+		Result = "sm"
 	case langSN:
-		Result = []byte("sn")
+		Result = "sn"
 	case langSO:
-		Result = []byte("so")
+		Result = "so"
 	case langSQ:
-		Result = []byte("sq")
+		Result = "sq"
 	case langSR:
-		Result = []byte("sr")
+		Result = "sr"
 	case langSS:
-		Result = []byte("ss")
+		Result = "ss"
 	case langST:
-		Result = []byte("st")
+		Result = "st"
 	case langSU:
-		Result = []byte("su")
+		Result = "su"
 	case langSV:
-		Result = []byte("sv")
+		Result = "sv"
 	case langSW:
-		Result = []byte("sw")
+		Result = "sw"
 	case langTA:
-		Result = []byte("ta")
+		Result = "ta"
 	case langTE:
-		Result = []byte("te")
+		Result = "te"
 	case langTG:
-		Result = []byte("tg")
+		Result = "tg"
 	case langTH:
-		Result = []byte("th")
+		Result = "th"
 	case langTI:
-		Result = []byte("ti")
+		Result = "ti"
 	case langTK:
-		Result = []byte("tk")
+		Result = "tk"
 	case langTL:
-		Result = []byte("tl")
+		Result = "tl"
 	case langTN:
-		Result = []byte("tn")
+		Result = "tn"
 	case langTO:
-		Result = []byte("to")
+		Result = "to"
 	case langTR:
-		Result = []byte("tr")
+		Result = "tr"
 	case langTS:
-		Result = []byte("ts")
+		Result = "ts"
 	case langTT:
-		Result = []byte("tt")
+		Result = "tt"
 	case langTW:
-		Result = []byte("tw")
+		Result = "tw"
 	case langTY:
-		Result = []byte("ty")
+		Result = "ty"
 	case langUG:
-		Result = []byte("ug")
+		Result = "ug"
 	case langUK:
-		Result = []byte("uk")
+		Result = "uk"
 	case langUR:
-		Result = []byte("ur")
+		Result = "ur"
 	case langUZ:
-		Result = []byte("uz")
+		Result = "uz"
 	case langVE:
-		Result = []byte("ve")
+		Result = "ve"
 	case langVI:
-		Result = []byte("vi")
+		Result = "vi"
 	case langVO:
-		Result = []byte("vo")
+		Result = "vo"
 	case langWA:
-		Result = []byte("wa")
+		Result = "wa"
 	case langWO:
-		Result = []byte("wo")
+		Result = "wo"
 	case langXH:
-		Result = []byte("xh")
+		Result = "xh"
 	case langYI:
-		Result = []byte("yi")
+		Result = "yi"
 	case langYO:
-		Result = []byte("yo")
+		Result = "yo"
 	case langZA:
-		Result = []byte("za")
+		Result = "za"
 	case langZH:
-		Result = []byte("zh")
+		Result = "zh"
 	case langZU:
-		Result = []byte("zu")
+		Result = "zu"
 	default:
-		return Result, errors.New("Not a valid ISO 639-1 language")
+		return []byte(Result), errors.New("Not a valid ISO 639-1 language")
 	}
-	return Result, nil
+	Result = "\"" + Result + "\""
+	return []byte(Result), nil
 }
 
 func (l language) UnmarshalJSON(b []byte) error {
-	switch string(b) {
+	lang := strings.Replace(string(b), "\"", "", -1)
+	switch string(lang) {
 	case "aa":
 		l = langAA
 	case "ab":
